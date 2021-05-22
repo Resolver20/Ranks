@@ -1,0 +1,145 @@
+#main {
+  display: flex;
+  align-items: center;
+}
+
+.content-table,
+.content-table_1 {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  overflow-x: auto;
+}
+
+.content-table thead,
+.content-table_1 thead {
+  background-color: rgb(69, 206, 172);
+  font-weight: bold;
+}
+
+.content-table tbody tr,
+.content-table_1 tbody tr {
+  background-color: rgb(255, 253, 253);
+}
+
+.content-table th,
+.content-table td,
+.content-table_1 th,
+.content-table_1 td {
+  padding: 12px 15px;
+  border-bottom: 1px solid black;
+}
+
+.content-table thead tr,
+.content-table_1 thead tr {
+  border-bottom: 1px solid black;
+}
+
+#tab {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+button {
+  color: black;
+  background-color: rgb(255, 253, 253);
+  opacity: 0.9;
+  box-shadow: 0.5px 0.5px 1px 1px rgb(69, 206, 172);
+  border: 1px solid rgb(69, 206, 172);
+  margin-left: 7.7vw;
+}
+
+#main_heading{
+    margin-top:4px;
+    margin-bottom:9px;
+    text-align:center;
+    color:rgb(69, 206, 172);
+    font-size:1.0em;
+}
+input[type=text]{
+  box-shadow: 1px 1px 1px solid black;
+  width:110px;
+}
+
+label {
+  text-align: center;
+  margin: 2px;
+  font-size: 0.8em;
+}
+
+.content-table th {
+  background-color: rgb(69, 206, 172);
+  position: sticky;
+  top: 0;
+}
+
+.content-table_1 th {
+  background-color: rgb(69, 206, 172);
+  position: sticky;
+  top: 30px;
+}
+
+#girls,
+#boys {
+  margin: 2px;
+  margin-bottom: 2px;
+  margin-left: 5px;
+}
+
+#help,
+#inst_code_table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.65vh;
+  margin-left: 4.9px;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+::placeholder {
+  opacity: 0.5;
+}
+label[for="Caste"],.gender_text{
+    color:rgb(221, 10, 10);
+}
+.gender_text{
+    position:relative;
+    bottom:2px;
+    left:-2px;
+}
+#tab_branch {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  height: 30px;
+  margin-left: 15px;
+  z-index: 1;
+}
+
+body {
+  background-color: white;
+}
+
+li {
+  margin-left: 2em;
+}
+
+@media (max-height: 500px) {
+  a {
+    font-size: 13px;
+  }
+}
