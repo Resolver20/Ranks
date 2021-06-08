@@ -1,7 +1,6 @@
 import PyPDF2
-file = open("../TSEAMCET2019LASTRANKSFIRSTPHASE.pdf", "rb")
+file = open("../pdfs/TSEAMCET2019LASTRANKSFIRSTPHASE.pdf", "rb")
 file = PyPDF2.PdfFileReader(file)
-
 def clean_up(chunck,index,errors):
     count = 0
     for i in chunck:
@@ -12,7 +11,7 @@ def clean_up(chunck,index,errors):
         count += 1
     return(chunck)
 
-for page_number in range(27):
+for page_number in range(file.numPages):
     obj = file.getPage(page_number)
     content = obj.extractText()
     array_format = content.split("\n")

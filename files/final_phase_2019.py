@@ -1,5 +1,5 @@
 import PyPDF2
-file = open("../TSEAMCET19FINALPHASE.pdf","rb")
+file = open("../pdfs/TSEAMCET19FINALPHASE.pdf","rb")
 file=PyPDF2.PdfFileReader(file)
 
 def clean_up(chunck, index, errors):
@@ -13,14 +13,13 @@ def clean_up(chunck, index, errors):
     return(chunck)
 
 
-for page_number in range(22):
+for page_number in range(file.numPages):
     obj = file.getPage(page_number)
     content = obj.extractText()
     array_format = content.split("\n")
     array_format = array_format[30:]
     prev = 30
-    affiliations = ["KU", "OU", "JNTU", "PJTSAU",
-                    "JNTUH", "PVNRTVU", "JNAFAU", "MGUN"]
+    affiliations = ["KU", "OU", "JNTU", "PJTSAU", "JNTUH", "PVNRTVU", "JNAFAU", "MGUN"]
     prev = 0
     count = 0
     array_chunck = []
