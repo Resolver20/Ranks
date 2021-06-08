@@ -125,6 +125,15 @@ label {
   padding: 20px;
 }
 
+#help {
+  background-color: #e8eaf6;
+  margin-top: 20vw;
+  border-top: 1px solid black;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  display: none;
+}
+
 a {
   text-decoration: none;
   font-size: 1.65vh;
@@ -185,4 +194,4 @@ li {
     font-size: 13px;
   }
 }
-/*# sourceMappingURL=first.css.map */
+/*# sourceMappingURL=main.css.map */
