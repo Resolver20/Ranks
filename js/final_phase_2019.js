@@ -900,13 +900,15 @@ function sortion(){
 function help() {
      let p = document.getElementById("help");
      let q = document.getElementById("instructions");
-     if (p.style.display == "none") {
-          p.style.display = "block";
-          q.innerHTML = "Hide_instructions"
-     }
-     else {
+     if (p.style.display == "block") {
           p.style.display = "none";
           q.innerHTML = "Show_instructions";
      }
+     else {
+          p.style.display = "block";
+          q.innerHTML = "Hide_instructions"
+     }
 }
 
+
+document.getElementById("help").style.display="none";
