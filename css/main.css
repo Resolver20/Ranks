@@ -193,4 +193,25 @@ li {
     font-size: 13px;
   }
 }
+
+.input_options_items {
+  position: relative;
+  width: 100%;
+  height: calc(25px);
+  background-color: white;
+  border-left: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
+  z-index: 1;
+}
+
+.input_options_items:hover {
+  background-color: #d8d8d8;
+}
+
+.input_options {
+  position: absolute;
+  width: 110px;
+  background-color: red;
+}
 /*# sourceMappingURL=main.css.map */

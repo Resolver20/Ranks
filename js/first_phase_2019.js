@@ -927,3 +927,76 @@ else{
      q.innerHTML="Show_instructions";
   }
 }
+
+document.querySelectorAll('input[type="text"]').forEach(item =>{
+     item.addEventListener("keyup",function(){
+     let data;
+     let id=this.id;
+     if(id=="collegeid"){
+          data=['AARM', 'ACEG', 'AHTC', 'AITH', 'AKIT', 'ANRH', 'ANRK', 'ARJN', 'ASOK', 'ASRA', 'AURG', 'AURP', 'AVIH', 'AVNI', 'BIET', 'BITN', 'BOMA', 'BOSE', 'BREW', 'BRIG', 'BRIL', 'BSGP', 'BSKR', 'BVRI', 'BVRW', 'CASR', 'CBIT', 'CCRP', 'CDTK', 'CFSR', 'CHET', 'CHTN', 'CHTS', 'CITS', 'CMRG', 'CMRK', 'CMRM', 'CMRN', 'CMRP', 'CVRH', 'CVSR', 'DRKC', 'DRKI', 'ELEN', 'ELET', 'GCTC', 'GLOB', 'GNIT', 'GNPT', 'GNTW', 'GRRR', 'GTEN', 'GURU', 'HITM', 'HOLY', 'IARE', 'IITT', 'INDI', 'INDU', 'JAYA', 'JBIT', 'JMTK', 'JMTS', 'JNKR', 'JNPASF', 'JNTH', 'JNTHMT', 'JNTM', 'JNTS', 'JOGI', 'JPNE', 'KCEA', 'KDDW', 'KGRH', 'KITS', 'KITW', 'KLRT', 'KMIT', 'KMTS', 'KNRR', 'KPRT', 'KTKM', 'KUCE', 'KUCESF', 'KUEWSF', 'KUWL', 'MDRK', 'MECS', 'METH', 'MGHA', 'MGIT', 'MGUNSF', 'MHVR', 'MINA', 'MLID', 'MLRD', 'MLRS', 'MLTM', 'MNRT', 'MOTK', 'MRCE', 'MRCP', 'MRCW', 'MREC', 'MREM', 'MRET', 'MREW', 'MRIT', 'MRTN', 'MTEC', 'MVSR', 'NETW', 'NGIT', 'NGMA', 'NIET', 'NNRG', 'NRCM', 'NREC', 'OUCE', 'OUCT', 'PALV', 'PETW', 'PRIW', 'RITW', 'RRST', 'SAIK', 'SAIS', 'SBIT', 'SDES', 'SDEW', 'SDGI', 'SIEI', 'SISG', 'SKEC', 'SMSK', 'SNIS', 'SNTI', 'SPEC', 'SPHN', 'SPOP', 'SRHP', 'SRIW', 'SRTI', 'SRYS', 'STLW', 'SVES', 'SVIT', 'SVSE', 'SWIT', 'TCEK', 'TCTK', 'TKEM', 'TKRC', 'TPCE', 'TRRC', 'TUDI', 'VAGE', 'VAGP', 'VASV', 'VBEC', 'VBIT', 'VCET', 'VCOP', 'VGNT', 'VGSE', 'VGWL', 'VITH', 'VITS', 'VJEC', 'VJIT', 'VJYA', 'VMEG', 'VMTW', 'VREC', 'VVKN', 'WESL', 'WITS'];
+     }
+     else if(id=="place"){
+            data=['HYD', 'JTL', 'KGM', 'KHM', 'KMR', 'KRM', 'MBN', 'MDL', 'MED', 'NLG', 'NZB', 'PDL', 'RR', 'SDP', 'SRD', 'SRP', 'WGR', 'WGU', 'YBG'];
+     }
+     else if(id=="course"){ 
+          data = ['AGR', 'AI', 'ANE', 'AUT', 'BIO', 'BME', 'CHE', 'CIV', 'CME', 'CSB', 'CSE', 'CSI', 'CSN', 'DRG', 'DTD', 'ECE', 'ECI', 'ECM', 'EEE', 'EIE', 'ETM', 'FDS', 'FPT', 'FSP', 'INF', 'IPE', 'ITE', 'MCT', 'MEC', 'MET', 'MIN', 'MMS', 'MMT', 'MTE', 'PHD', 'PHE', 'PLG', 'TEX'];
+     }
+     else if(id=="caste"){ 
+          data=["OC","BC-A" ,"BC-B","BC-C","BC-D","BC-E","SC","ST"]
+     }
+     else if(id=="coed_girls"){ 
+          data = ["COED", "GIRLS"];
+     }
+     else if(id=="affiliation"){
+            data = [ "MGUN", "KU", "PVNRTVU", "JNTUH", "JNAFAU", "OU", "PJTSAU" ];
+     }
+     else if(id=="college_type"){ 
+          data = ["UNIV", "PVT", "SF", "GOV"];
+     }
+     else{
+          data=[];
+     }
+     try{
+          let child=this.parentElement.querySelector(".input_options");
+          this.parentElement.removeChild(child);
+     }
+     catch(err)
+     {
+          console.log("No Child having class input_option");
+
+     }
+     let input_value=(this.value).toUpperCase();
+     if(input_value!=""){
+          
+          let absolute_div=document.createElement("div");
+          absolute_div.setAttribute("class","input_options");
+          this.parentElement.appendChild(absolute_div);
+          for(let i=0;i<data.length;i++){
+               if(input_value==data[i].slice(0,(input_value).length)){
+                     let dummy = document.createElement("div");
+                     dummy.setAttribute("class", "input_options_items");
+                     dummy.innerHTML = data[i];
+
+                     dummy.addEventListener("click",function(){
+                          this.parentElement.parentElement.querySelector("input").value=this.innerHTML;
+                          let child = this.parentElement.parentElement.querySelector( ".input_options" );
+                          this.parentElement.parentElement.removeChild(child);
+                     });
+                     absolute_div.appendChild(dummy);
+               }
+          }
+     }
+})});
+document.querySelectorAll('input[type="text"]').forEach(item =>{
+     item.addEventListener("focusout",function(){
+          let curr=this;
+          setTimeout(function(){
+               try {
+                    let child =curr.parentElement.querySelector(".input_options");
+                    curr.parentElement.removeChild(child);
+               } catch (err) {
+                    console.log("Not found any absolute_div");
+               }
+          },100);
+     })
+});
