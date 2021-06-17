@@ -75,8 +75,8 @@ button {
 }
 
 input[type=text] {
-  -webkit-box-shadow: 1px 1px 1px solid black;
-          box-shadow: 1px 1px 1px solid black;
+  -webkit-box-shadow: 1px 1px 0.1px solid black;
+          box-shadow: 1px 1px 0.1px solid black;
   width: 110px;
 }
 
@@ -199,19 +199,21 @@ li {
   width: 100%;
   height: calc(25px);
   background-color: white;
-  border-left: 1px solid #b3b3b3;
-  border-right: 1px solid #b3b3b3;
-  border-bottom: 1px solid #b3b3b3;
+  border-left: 0.1px solid #b3b3b3;
+  border-right: 0.1px solid #b3b3b3;
+  border-bottom: 0.1px solid #b3b3b3;
   z-index: 1;
 }
 
-.input_options_items:hover {
-  background-color: #d8d8d8;
+.input_options_items:hover, .input_options_items:focus {
+  background-color: #e2e2e2;
+  outline: none;
 }
 
 .input_options {
   position: absolute;
+  z-index: 1;
   width: 110px;
-  background-color: red;
+  background-color: black;
 }
 /*# sourceMappingURL=main.css.map */

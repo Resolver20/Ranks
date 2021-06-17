@@ -61,8 +61,12 @@ button {
     font-size:1.0em;
 }
 input[type=text]{
-  box-shadow: 1px 1px 1px solid black;
+  box-shadow: 1px 1px 0.1px solid black;
+  // border:1px solid grey;
   width:110px;
+  // &:focus{
+    // outline:none;
+  // }
 }
 
 label {
@@ -156,18 +160,22 @@ li {
   width:100%;
   height:calc(25px);
   background-color: white;
-  border-left:1px solid rgb(179, 179, 179);
-  border-right:1px solid rgb(179, 179, 179);
-  border-bottom:1px solid rgb(179, 179, 179);
-  &:hover{
-    background-color:rgb(216, 216, 216);
+  border-left:0.1px solid rgb(179, 179, 179);
+  border-right:0.1px solid rgb(179, 179, 179);
+  border-bottom:0.1px solid rgb(179, 179, 179);
+  // border-top:0.01px solid rgb(179, 179, 179);
+  &:hover,&:focus{
+    background-color:rgb(226, 226, 226);
+    outline:none;
   }
   z-index:1;
 }
 .input_options{
   position:absolute;
+
+  z-index:1;
   
   width:110px;
-  background-color: red;
+  background-color: black;
 
 }

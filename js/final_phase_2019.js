@@ -944,6 +944,8 @@ document.querySelectorAll('input[type="text"]').forEach(item =>{
      try{
           let child=this.parentElement.querySelector(".input_options");
           this.parentElement.removeChild(child);
+          focussed_element=0;
+          previous_switch = "none";
      }
      catch(err)
      {
@@ -958,30 +960,87 @@ document.querySelectorAll('input[type="text"]').forEach(item =>{
           this.parentElement.appendChild(absolute_div);
           for(let i=0;i<data.length;i++){
                if(input_value==data[i].slice(0,(input_value).length)){
-                     let dummy = document.createElement("div");
-                     dummy.setAttribute("class", "input_options_items");
-                     dummy.innerHTML = data[i];
+                     let child_option = document.createElement("div");
+                     child_option.setAttribute("class", "input_options_items");
+                     child_option.setAttribute("tabindex", "0");
+                     child_option.innerHTML = data[i];
 
-                     dummy.addEventListener("click",function(){
-                          this.parentElement.parentElement.querySelector("input").value=this.innerHTML;
-                          let child = this.parentElement.parentElement.querySelector( ".input_options" );
-                          this.parentElement.parentElement.removeChild(child);
-                     });
-                     absolute_div.appendChild(dummy);
+                     child_option.addEventListener("click",function(event){ update_input_text(event,this); },false);
+                     child_option.addEventListener("keypress",function(event){ update_input_text(event,this); },false);
+                     absolute_div.appendChild(child_option);
                }
           }
      }
-})});
+},false)});
+
+function update_input_text(event,curr){
+      if(event.type=="click" || event.key=="Enter"){
+           curr.parentElement.parentElement.querySelector("input").value=curr.innerHTML;
+           let current_input_index=curr.parentElement.parentElement.querySelector("input").tabIndex;
+           let input_lists=document.querySelectorAll("input");
+           let child = curr.parentElement.parentElement.querySelector( ".input_options" );
+           curr.parentElement.parentElement.removeChild(child);
+           for(let i=0;i<input_lists.length;i++){
+                if(input_lists[i].tabIndex==current_input_index+1){
+                     input_lists[i].focus();
+                     break;
+                    }
+               }
+            focussed_element = 0;
+            previous_switch = "none";
+
+     }
+}
 document.querySelectorAll('input[type="text"]').forEach(item =>{
-     item.addEventListener("focusout",function(){
-          let curr=this;
-          setTimeout(function(){
+     item.addEventListener("focusin",function(){
                try {
-                    let child =curr.parentElement.querySelector(".input_options");
-                    curr.parentElement.removeChild(child);
+                     document.querySelector(".input_options").remove();
+                     focussed_element = 0;
+                     previous_switch = "none";
+
                } catch (err) {
                     console.log("Not found any absolute_div");
                }
-          },100);
-     })
+     },false)
 });
+
+var focussed_element=0;
+var previous_switch="none";
+document.addEventListener("keydown",function(event){
+     try{
+          if(event.key=="ArrowUp"){
+               event.preventDefault();
+               let options=document.querySelectorAll(".input_options_items");
+               if(previous_switch=="down" && focussed_element==1){   
+                    focussed_element = options.length;         // corner_case
+               }
+               else if(previous_switch=="down" && focussed_element==0){
+                    focussed_element=options.length-1;         // unexpected jump to direct 0 
+               }
+               else if(previous_switch=="down"){              // focus goes two steps vertically as upwards one step is caused by arrowdown by default
+                    focussed_element=Math.max(focussed_element-1,0);
+               }
+               else if(focussed_element==0){
+                    focussed_element=options.length;
+               }
+               focussed_element=(Math.max(focussed_element-1,0))%options.length;
+               options[focussed_element].focus();
+               previous_switch="up";
+               }
+               else if(event.key=="ArrowDown"){       
+                    event.preventDefault();
+                    let options=document.querySelectorAll(".input_options_items");
+                    if(previous_switch=="up"){
+                         focussed_element = (focussed_element + 1) % options.length;
+                    }
+                    options[focussed_element].focus();
+                    focussed_element=(focussed_element+1)%options.length;
+               previous_switch = "down";
+
+          }
+     }
+          catch(e){
+               console.log("No focussable element on arrow key press");
+          }
+               
+},false);
