@@ -66,12 +66,6 @@ button {
   margin-left: 7.7vw;
 }
 
-#main_heading {
-  text-align: center;
-  color: #45ceac;
-  font-size: 1.0em;
-}
-
 input[type=text] {
   -webkit-box-shadow: 1px 1px 0.1px solid black;
           box-shadow: 1px 1px 0.1px solid black;
@@ -219,6 +213,14 @@ li {
 
 .partition_1 {
   position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   z-index: 1;
   height: auto;
 }
@@ -238,19 +240,20 @@ li {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   height: 90px;
+  width: 90%;
   border-bottom: 0.1px solid grey;
 }
 
 .main_heading_text {
   color: #f53302;
-  position: relative;
-  left: 9px;
   font-weight: 450;
   font-size: 18px;
+  position: relative;
+  left: -3px;
 }
 
 .drop_down {
-  width: 190px;
+  width: 200px;
   z-index: 2;
   background-color: white;
   border-bottom: 0.1px solid grey;
@@ -334,14 +337,14 @@ li {
 }
 
 .side_arrow {
-  width: 90px;
+  width: 10%;
   height: 90px;
   z-index: 1;
-  position: absolute;
-  left: -14px;
+  padding-left: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-bottom: 0.1px solid grey;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -409,12 +412,20 @@ li {
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 900px) {
   .drop_down {
-    width: 200px;
+    width: 230px;
+  }
+  .main_heading_text {
+    position: relative;
+    left: -20%;
+  }
+  #main_heading {
+    width: 93%;
   }
   .side_arrow {
-    left: -1px;
+    width: 7%;
+    padding-left: 5px;
   }
 }
 /*# sourceMappingURL=main.css.map */
