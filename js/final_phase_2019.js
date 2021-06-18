@@ -1009,38 +1009,77 @@ var previous_switch="none";
 document.addEventListener("keydown",function(event){
      try{
           if(event.key=="ArrowUp"){
-               event.preventDefault();
+
                let options=document.querySelectorAll(".input_options_items");
-               if(previous_switch=="down" && focussed_element==1){   
-                    focussed_element = options.length;         // corner_case
-               }
-               else if(previous_switch=="down" && focussed_element==0){
-                    focussed_element=options.length-1;         // unexpected jump to direct 0 
-               }
-               else if(previous_switch=="down"){              // focus goes two steps vertically as upwards one step is caused by arrowdown by default
-                    focussed_element=Math.max(focussed_element-1,0);
-               }
-               else if(focussed_element==0){
-                    focussed_element=options.length;
-               }
-               focussed_element=(Math.max(focussed_element-1,0))%options.length;
-               options[focussed_element].focus();
-               previous_switch="up";
-               }
-               else if(event.key=="ArrowDown"){       
+               if(options.length>0){
+
                     event.preventDefault();
-                    let options=document.querySelectorAll(".input_options_items");
+                    if(previous_switch=="down" && focussed_element==1){   
+                         focussed_element = options.length;         // corner_case
+                    }
+                    else if(previous_switch=="down" && focussed_element==0){
+                         focussed_element=options.length-1;         // unexpected jump to direct 0 
+                    }
+                    else if(previous_switch=="down"){              // focus goes two steps vertically as upwards one step is caused by arrowdown by default
+                         focussed_element=Math.max(focussed_element-1,0);
+                    }
+                    else if(focussed_element==0){
+                         focussed_element=options.length;
+                    }
+                    focussed_element=(Math.max(focussed_element-1,0))%options.length;
+                    options[focussed_element].focus();
+                    previous_switch="up";
+               }
+          }
+          else if(event.key=="ArrowDown"){       
+               let options=document.querySelectorAll(".input_options_items");
+               if(options.length>0){
+
+                    event.preventDefault();
                     if(previous_switch=="up"){
                          focussed_element = (focussed_element + 1) % options.length;
                     }
                     options[focussed_element].focus();
                     focussed_element=(focussed_element+1)%options.length;
-               previous_switch = "down";
-
+                    previous_switch = "down";
+                    
+               }
+               }
           }
-     }
           catch(e){
                console.log("No focussable element on arrow key press");
           }
                
 },false);
+function ShowSidebar(){
+     
+     let collections=document.getElementsByClassName("menu_options");
+     for(let i=0;i<collections.length;i++){
+          collections[i].style.opacity="0";
+     }
+     if(document.getElementsByClassName("bi bi-chevron-down")[0].style.animation!="0.6s ease 0s 1 normal forwards running rotate_up"){
+
+          document.getElementsByClassName("drop_down")[0].style.display="flex";
+          document.getElementsByClassName("drop_down")[0].style.animation = "pull_down 0.6s"; 
+          document.getElementsByClassName("drop_down")[0].style.animationFillMode = "forwards"; 
+          document.getElementsByClassName("bi bi-chevron-down")[0].style.animation = "rotate_up 0.6s"; 
+          document.getElementsByClassName("bi bi-chevron-down")[0].style.animationFillMode = "forwards"; 
+          setTimeout( function(){
+               for (let i = 0; i < collections.length; i++) {
+                    collections[i].style.opacity = "1";
+               }
+          },310 );
+     }
+     else{
+          setTimeout(function(){
+
+               document.getElementsByClassName("drop_down")[0].style.animation = "pull_up 0.6s"; 
+               document.getElementsByClassName("bi bi-chevron-down")[0].style.animation = "rotate_down 0.6s"; 
+               document.getElementsByClassName("bi bi-chevron-down")[0].style.animationFillMode = "forwards"; 
+               setTimeout( function(){
+                    document.getElementsByClassName("drop_down")[0].style.display="none";
+               },500 );
+          },50);
+
+     }
+}
