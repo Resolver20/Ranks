@@ -202,10 +202,5 @@ document.querySelectorAll('input[type="text"]').forEach((item) => {
        },
        false
      );
-     item.addEventListener("keyup",function(event){
-          if (event.key == "Enter") {
-           focus_on_next_input(this.tabIndex);
-         }
-        }
-        )}
+}
     );
