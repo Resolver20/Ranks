@@ -156,12 +156,11 @@ document.querySelectorAll('input[type="text"]').forEach((item) => {
            }
 
            try {
-             let child = this.parentElement.querySelector(".input_options");
-             this.parentElement.removeChild(child);
-             focussed_element.value = 0;
-             previous_switch.value = "none";
-           } catch (err) {
-                
+                let child = this.parentElement.querySelector(".input_options");
+                this.parentElement.removeChild(child);
+                focussed_element.value = 0;
+                previous_switch.value = "none";
+               } catch (err) {
              console.log("No Child having class input_option");
            }
            let input_value = this.value.toUpperCase();
@@ -197,6 +196,11 @@ document.querySelectorAll('input[type="text"]').forEach((item) => {
        },
        false
      );
-
-        }
+     item.addEventListener("keydown",function(event){               
+          if(event.key=="Enter"){
+               console.log("enter pressed");
+               focus_on_next_input(this.tabIndex);
+          }
+     });
+     }
     );
