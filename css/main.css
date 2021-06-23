@@ -300,6 +300,10 @@ li {
   background-color: #e2e2e2;
 }
 
+.menu_options:last-of-type {
+  border-bottom: 0px solid grey;
+}
+
 @-webkit-keyframes pull_down {
   from {
     height: 0px;

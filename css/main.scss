@@ -221,7 +221,6 @@ li {
       align-items:center;
       border-right:0.1px solid grey;
 
-
 }
 .menu_options{
   // background-color: pink;
@@ -237,6 +236,9 @@ li {
   &:hover{
         background-color:rgb(226, 226, 226);
   }
+}
+.menu_options:last-of-type{
+  border-bottom:0px solid grey;
 }
 
 @keyframes pull_down{
