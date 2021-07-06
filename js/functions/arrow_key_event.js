@@ -1,4 +1,4 @@
-import { focussed_element, previous_switch } from "./basic.js";
+import { focussed_element, previous_switch } from "./help.js";
 
 export function options_up_downer() {
 document.addEventListener(

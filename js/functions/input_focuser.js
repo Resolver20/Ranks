@@ -1,4 +1,4 @@
-import { focussed_element, previous_switch } from "./basic.js";
+import { focussed_element, previous_switch } from "./help.js";
 
 export function focus_on_next_input(curr_tab_index) {
   let input_lists = document.querySelectorAll("input");

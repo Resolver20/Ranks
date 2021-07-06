@@ -1,6 +1,6 @@
-import {initialize_all_event_listeners,help} from "../functions/basic.js"
+import {initialize_all_event_listeners,help} from "../functions/help.js"
 import { ShowSidebar } from "../functions/side_bar.js";
-import { update_input_text, focus_on_next_input } from "../functions/input_focuser_updater.js";
+import { update_input_text, focus_on_next_input } from "../functions/input_focuser.js";
 import {data,curr_data} from "../data_holders/first_phase_2019.js";
 
 window.ShowSidebar=ShowSidebar;

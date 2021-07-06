@@ -1,13 +1,11 @@
-import {initialize_all_event_listeners,help} from "../functions/basic.js"
+import {initialize_all_event_listeners,help} from "../functions/help.js"
 import { ShowSidebar } from "../functions/side_bar.js";
-import { update_input_text, focus_on_next_input } from "../functions/input_focuser_updater.js";
+import { update_input_text, focus_on_next_input } from "../functions/input_focuser.js";
 import {data,curr_data} from "../data_holders/final_phase_2019.js";
 
 window.ShowSidebar=ShowSidebar;
 window.initialize_all_event_listeners=initialize_all_event_listeners;
 window.help=help;
-var hello=2;
-window.hello=hello;
 window.sortion=sortion;
 
 initialize_all_event_listeners();
@@ -136,7 +134,6 @@ function sortion(){
          alert("No data found according to your formatted input ");
     }
 }
-document.getElementById("help").style.display="none";
 
 
 document.querySelectorAll('input[type="text"]').forEach((item) => {
