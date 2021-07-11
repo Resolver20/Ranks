@@ -196,7 +196,7 @@ li {
 }
 
 .input_options_items:hover, .input_options_items:focus {
-  background-color: #e2e2e2;
+  background-color: #bdbdbd;
   outline: none;
 }
 
@@ -441,5 +441,9 @@ li {
 
 .ordered_list {
   font-size: 0.8em;
+}
+
+.color_up {
+  background-color: #e2e2e2;
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,6 +1,6 @@
-import {initialize_all_event_listeners,help} from "../functions/help.js"
+import {initialize_all_event_listeners,help,focussed_element,previous_switch} from "../functions/help.js"
 import { ShowSidebar } from "../functions/side_bar.js";
-import { update_input_text, focus_on_next_input } from "../functions/input_focuser.js";
+import { update_input_text, focus_on_next_input,recommend_input_options } from "../functions/input_focuser.js";
 import {data,curr_data} from "../data_holders/first_phase_2019.js";
 
 window.ShowSidebar=ShowSidebar;
@@ -134,73 +134,53 @@ export function sortion(){
 }
 
 document.querySelectorAll('input[type="text"]').forEach((item) => {
-     item.addEventListener(
-       "keyup",
-       function (event) {
-           let data = [];
-           let id = this.id;
-           if (id == "collegeid") {
-             data = curr_data["instcodes"];
-           } else if (id == "place") {
-             data = curr_data["distcodes"];
-           } else if (id == "course") {
-             data = curr_data["branchcodes"];
-           } else if (id == "caste") {
-             data = curr_data["castes"];
-           } else if (id == "coed_girls") {
-             data = curr_data["specificities"];
-           } else if (id == "affiliation") {
-             data = curr_data["affiliations"];
-           } else if (id == "college_type") {
-             data = curr_data["college_types"];
-           }
+  item.addEventListener(
+    "keyup",
+    function (event) {
+      if (event.key != "ArrowUp" && event.key != "ArrowDown") {
+        focussed_element.value = 0;
+        previous_switch.value = "none";
+        let data = [];
+        let id = this.id;
+        if (id == "collegeid") {
+          data = curr_data["instcodes"];
+        } else if (id == "place") {
+          data = curr_data["distcodes"];
+        } else if (id == "course") {
+          data = curr_data["branchcodes"];
+        } else if (id == "caste") {
+          data = curr_data["castes"];
+        } else if (id == "coed_girls") {
+          data = curr_data["specificities"];
+        } else if (id == "affiliation") {
+          data = curr_data["affiliations"];
+        } else if (id == "college_type") {
+          data = curr_data["college_types"];
+        }
 
-           try {
-                let child = this.parentElement.querySelector(".input_options");
-                this.parentElement.removeChild(child);
-                focussed_element.value = 0;
-                previous_switch.value = "none";
-               } catch (err) {
-             console.log("No Child having class input_option");
-           }
-           let input_value = this.value.toUpperCase();
-           if (input_value != "") {
-             let absolute_div = document.createElement("div");
-             absolute_div.setAttribute("class", "input_options");
-             this.parentElement.appendChild(absolute_div);
-             for (let i = 0; i < data.length; i++) {
-               if (input_value == data[i].slice(0, input_value.length)) {
-                 let child_option = document.createElement("div");
-                 child_option.setAttribute("class", "input_options_items");
-                 child_option.setAttribute("tabindex", "0");
-                 child_option.innerHTML = data[i];
-
-                 child_option.addEventListener(
-                   "click",
-                   function (event) {
-                     update_input_text(event, this);
-                   },
-                   false
-                 );
-                 child_option.addEventListener(
-                   "keypress",
-                   function (event) {
-                     update_input_text(event, this);
-                   },
-                   false
-                 );
-                 absolute_div.appendChild(child_option);
-               }
-             }
-           }
-       },
-       false
-     );
-     item.addEventListener("keydown",function(event){               
-          if(event.key=="Enter"){
-               console.log("enter pressed");
-               focus_on_next_input(this.tabIndex);
-          }
-     });
-     }
-    );
+        try {
+          let child = this.parentElement.querySelector(".input_options");
+          this.parentElement.removeChild(child);
+        } catch (err) {
+          console.log("No Child having class input_option");
+        }
+        let input_value = this.value.toUpperCase();
+        if (input_value != "") {
+             let current=this;
+             recommend_input_options(current,data,input_value);
+        }
+      }
+    },
+    false
+  );
+  item.addEventListener("keydown", function (event) {
+    if (event.key == "Enter") {
+      console.log("enter pressed");
+      let colored_option = document.querySelector(".color_up");
+      if (colored_option != null) {
+        update_input_text(event, colored_option);
+      }
+      focus_on_next_input(this.tabIndex);
+    }
+  });
+});

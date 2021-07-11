@@ -157,7 +157,7 @@ li {
   border-bottom:0.1px solid rgb(179, 179, 179);
   // border-top:0.01px solid rgb(179, 179, 179);
   &:hover,&:focus{
-    background-color:rgb(226, 226, 226);
+    background-color:rgb(189, 189, 189);
     outline:none;
   }
   z-index:1;
@@ -325,4 +325,7 @@ li {
 }
 .ordered_list{
   font-size:0.8em;
+}
+.color_up{
+    background-color:rgb(226, 226, 226);
 }
