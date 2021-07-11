@@ -78,5 +78,26 @@ export function options_destroyer(){
       },
       false
     );
-  });
+    item.addEventListener(
+      "focusout",
+      function () {
+        try {
+          setTimeout(function(){
+            let input_options_main_div= document.querySelector(".input_options");
+            if(input_options_main_div!=null){
+              input_options_main_div.remove();
+            }
+            focussed_element.value = 0;
+            previous_switch.value = "none";
+            console.log("removed");
+        },30);
+        } catch (err) {
+          console.log("Not found any absolute_div");
+        }
+      },
+      false
+    );
+    
+  }
+  );
 }
