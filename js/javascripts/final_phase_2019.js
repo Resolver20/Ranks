@@ -105,7 +105,7 @@ function sortion(){
           let i=0,j=0;
      var key_1=-1;
      console.log(key)
-     for(i=0;i<774;i++){
+     for(i=0;i<data.length;i++){
           //  console.log(data[i],ranks[key])
           if ((data[i][ranks[key]] != -1 && data[i][ranks[key]] != "NA")  && (affiliation.includes(data[i][26])) && (college_type.includes(data[i][5])) && (branchcodes.includes(data[i][7]) && distcodes.includes(data[i][3])) && (instcodes.includes(data[i][0])) && (Number(data[i][real[9]]) <= Number(highest_cutoff) && Number(data[i][real[9]]) >= Number(lowest_cutoff)) && (coed_girls.includes(data[i][4]))){
                     // console.log(data[i][real[9]])

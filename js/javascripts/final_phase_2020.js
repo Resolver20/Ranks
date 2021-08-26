@@ -1,7 +1,7 @@
 import {initialize_all_event_listeners,help,focussed_element,previous_switch} from "../functions/help.js"
 import { ShowSidebar } from "../functions/side_bar.js";
 import { update_input_text, focus_on_next_input,recommend_input_options } from "../functions/input_focuser.js";
-import {data,curr_data} from "../data_holders/first_phase_2019.js";
+import {data,curr_data} from "../data_holders/final_phase_2020.js";
 
 window.ShowSidebar=ShowSidebar;
 window.initialize_all_event_listeners=initialize_all_event_listeners;
@@ -85,19 +85,21 @@ export function sortion(){
                let ranks = { "OC BOYS": 9, "OC GIRLS": 10, "BC-A BOYS": 11, "BC-A GIRLS": 12, "BC-B BOYS": 13, "BC-B GIRLS": 14, "BC-C BOYS": 15, "BC-C GIRLS": 16, "BC-D BOYS": 17, "BC-D GIRLS": 18, "BC-E BOYS": 19, "BC-E GIRLS": 20, "SC BOYS": 21, "SC GIRLS": 22, "ST BOYS": 23, "ST GIRLS": 24 }
                let caste = document.getElementById("caste");
                key = caste.value.toUpperCase() + " GIRLS";
-               // console.log(a[ranks[key]], b[ranks[key]], Number(Number(a[ranks[key]] - Number(b[ranks[key]]))))
+               console.log(a[ranks[key]], b[ranks[key]], Number(Number(a[ranks[key]] - Number(b[ranks[key]]))))
                return (Number(Number(a[ranks[key]]) - Number(b[ranks[key]])));
           }
           function Magic_1(a, b) {
                let ranks = { "OC BOYS": 9, "OC GIRLS": 10, "BC-A BOYS": 11, "BC-A GIRLS": 12, "BC-B BOYS": 13, "BC-B GIRLS": 14, "BC-C BOYS": 15, "BC-C GIRLS": 16, "BC-D BOYS": 17, "BC-D GIRLS": 18, "BC-E BOYS": 19, "BC-E GIRLS": 20, "SC BOYS": 21, "SC GIRLS": 22, "ST BOYS": 23, "ST GIRLS": 24 }
                let caste = document.getElementById("caste")
                key = caste.value.toUpperCase() + " BOYS";
+               // console.log(ranks[key]);
+               console.log(a[ranks[key]], b[ranks[key]], Number(Number(a[ranks[key]] - Number(b[ranks[key]]))))
                return (Number(Number(a[ranks[key]]) - Number(b[ranks[key]])));
           }
           if(key.split(" ")[1]=="GIRLS"){
-          data.sort(Magic);
+               data.sort(Magic);
           // console.log(key.split(" "));
-     }
+          }
           else{
                data.sort(Magic_1);
           }
