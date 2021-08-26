@@ -228,6 +228,7 @@ li {
 
   width:100%;
   height:500px;
+  font-size:15px;
   display:flex;
   align-items: center;
   justify-content: center;
@@ -305,7 +306,6 @@ li {
 @media (min-width: 900px) {
   .drop_down{
   width:230px;
-  height:500px;
    }
    .main_heading_text{
        position:relative;
